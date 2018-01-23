@@ -6,7 +6,7 @@ class Home extends StatelessWidget {
 
   const Home ({
     Key key,
-    @required this.onSubmit,
+    this.onSubmit,
   }) : super(key:key);
 
   final VoidCallback onSubmit;
@@ -16,7 +16,15 @@ class Home extends StatelessWidget {
   String get username => _user.text;
   String get password => _pass.text;
 
-
+  String screenSelecter(String usernm) {
+    if (usernm =="user") {
+      return "/Second";
+    }
+    else {
+      print("Enter correct credientals");
+      return "/Home";
+    }
+  }
 
 
   @override
@@ -36,10 +44,13 @@ class Home extends StatelessWidget {
             children: <Widget>[
             new TextField(controller: _user, decoration: new InputDecoration(hintText: 'Enter a username'),),
             new TextField(controller: _pass, decoration: new InputDecoration(hintText: 'Enter a password'), obscureText: true,),
-            new RaisedButton( child: new Text('Submit'), onPressed: onSubmit),
+            //new RaisedButton( child: new Text('Submit'), onPressed: onSubmit),
+            new RaisedButton(
+                child:  new Text('Submit'),
+                onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(screenSelecter(username), (Route<dynamic> route) => false);}),
             new RaisedButton(
                 child:  new Text('Register'),
-                onPressed: (){Navigator.of(context).pushNamed('/Second');})
+                onPressed: (){Navigator.of(context).pushNamed("/Third");})
 
             ],
           ),
