@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
 
   String screenSelecter(String usernm) {
     if (usernm =="user") {
-      return "/Second";
+      return "/LoggedInHome";
     }
     else {
       print("Enter correct credientals");
@@ -50,7 +50,7 @@ class Home extends StatelessWidget {
                 onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(screenSelecter(username), (Route<dynamic> route) => false);}),
             new RaisedButton(
                 child:  new Text('Register'),
-                onPressed: (){Navigator.of(context).pushNamed("/Third");})
+                onPressed: (){Navigator.of(context).pushNamed("/StartRegistration");})
 
             ],
           ),
