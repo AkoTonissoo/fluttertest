@@ -42,15 +42,15 @@ class Home extends StatelessWidget {
         child: new Center(
           child: new Column(
             children: <Widget>[
-            new TextField(controller: _user, decoration: new InputDecoration(hintText: 'Enter a username'),),
-            new TextField(controller: _pass, decoration: new InputDecoration(hintText: 'Enter a password'), obscureText: true,),
-            //new RaisedButton( child: new Text('Submit'), onPressed: onSubmit),
-            new RaisedButton(
-                child:  new Text('Submit'),
-                onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(screenSelecter(username), (Route<dynamic> route) => false);}),
-            new RaisedButton(
-                child:  new Text('Register'),
-                onPressed: (){Navigator.of(context).pushNamed("/StartRegistration");})
+              new TextField(controller: _user, decoration: new InputDecoration(hintText: 'Enter a username'),),
+              new TextField(controller: _pass, decoration: new InputDecoration(hintText: 'Enter a password'), obscureText: true,),
+              //new RaisedButton( child: new Text('Submit'), onPressed: onSubmit),
+              new RaisedButton(
+                  child:  new Text('Submit'),
+                  onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(screenSelecter(username), (Route<dynamic> route) => false);}),
+              new RaisedButton(
+                  child:  new Text('Register'),
+                  onPressed: (){Navigator.of(context).pushNamed("/StartRegistration");})
 
             ],
           ),

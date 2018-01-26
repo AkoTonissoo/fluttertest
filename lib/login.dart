@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 
-class login extends StatelessWidget {
-  const login ({
+class Login extends StatelessWidget {
+  const Login ({
     Key key,
     @required this.onSubmit,
   }) : super(key:key);

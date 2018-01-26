@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 
-class register extends StatelessWidget {
-  const register ({
+class Register extends StatelessWidget {
+  const Register ({
     Key key,
     @required this.onSubmit,
   }) : super(key:key);
