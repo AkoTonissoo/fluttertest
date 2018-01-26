@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Home extends StatelessWidget {
 
-  const Home ({
-    Key key,
-    this.onSubmit,
-  }) : super(key:key);
 
-  final VoidCallback onSubmit;
+
   static final TextEditingController _user = new TextEditingController();
   static final TextEditingController _pass = new TextEditingController();
 
   String get username => _user.text;
   String get password => _pass.text;
 
-  String screenSelecter(String usernm) {
-    if (usernm =="user") {
+  String checkSignIn(FirebaseAuth auth, String user, String pass) {
+    auth.signInWithEmailAndPassword(email: username, password: password);
+    if (auth.currentUser() != null) {
       return "/LoggedInHome";
     }
     else {
@@ -29,6 +26,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var authentication = FirebaseAuth.instance;
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Home'),
@@ -47,10 +45,10 @@ class Home extends StatelessWidget {
               //new RaisedButton( child: new Text('Submit'), onPressed: onSubmit),
               new RaisedButton(
                   child:  new Text('Submit'),
-                  onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(screenSelecter(username), (Route<dynamic> route) => false);}),
+                  onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil(checkSignIn(authentication, username, password), (Route<dynamic> route) => false);}),
               new RaisedButton(
                   child:  new Text('Register'),
-                  onPressed: (){Navigator.of(context).pushNamed("/StartRegistration");})
+                  onPressed: (){Navigator.of(context).pushNamed('/StartRegistration');})
 
             ],
           ),
